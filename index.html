@@ -6,49 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<style>
-    * {
-        box-sizing: border-box;
-        padding: 0;
-        margin: 0;
-        outline: none;
-    }
-
-    body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        overflow: hidden;
-        background-size: cover;
-        background: linear-gradient(180.8deg, rgb(66, 255, 132), rgb(124, 216, 255) 99%);
-    }
-
-    h1 {
-        font-size: 50px;
-        text-align: center;
-    }
-
-    .list {
-        text-align: center;
-        list-style: none;
-        padding: 40px;
-        display: inline;
-    }
-
-    ul {
-        display: inline;
-    }
-</style>
+<link rel="stylesheet" type="text/css" href="index.css">
 <body>
     <body>
-        <!-- <h1>Project title </h1>
-    <h2>sub title </h2>
-    <p> paragraph and other descriptions </p> -->
-    
-        <div id="mainbox" class=" mainbox">
+        <div class="gradient-border">
+        <div class="gameInto">
+        <h1>👉 Activity Wheel👈</h1>
+    <h2 style="color:black;"> Sitting at home bored with nothing to do?</h2>
+    <p> Take a spin at it 🤪 </p>
+    </div>
+    </div>
+       <div id ="page">
+        <div id="mainbox" class="mainbox">
             <div id="box" class="box">
-                <div class="box 1">
+                <div class="box1">
                     <span class="span1"> <b>Activity 1</b></span>
                     <span class="span2"><b>Activity 2</b></span>
                     <span class="span3"><b>Activity 3</b></span>
@@ -62,7 +33,9 @@
     
                 </div>
             </div>
-            <button class="spin">SPIN</button>
+            <button class="spin" onclick= "rotateFunction()"> SPIN</button>
         </div>
+       </div>
+       <script src="index.js"></script>
 </body>
 </html>
