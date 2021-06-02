@@ -65,10 +65,7 @@ function rotateFunction(){
   activityButton.addEventListener('click',addActivity)
   recommendationDiv.append(activityButton)
   }
-<<<<<<< HEAD
 
-
-=======
     
   const addActivity = (data) => {
     let textIntro = document.querySelector("#mainTitle")
@@ -91,8 +88,28 @@ function rotateFunction(){
     borderDiv.append(innerDiv)
     activityList.append(borderDiv)
   }
->>>>>>> 2881584533207d2f279925427f6bfac284eaac7c
-
+    
+  const addActivity = (data) => {
+    let textIntro = document.querySelector("#mainTitle")
+    let textType = document.querySelector("#mainDescription");
+    let textGuest = document.querySelector("#secondDescription");
+    console.log("You clicked the button!")
+    let activityList = document.getElementById("footer")
+    let borderDiv = document.createElement("div")
+    borderDiv.className = "gradient-border"
+    let innerDiv = document.createElement("div")
+    innerDiv.className = "gameInto"
+    let title = document.createElement("h1")
+    title.innerText = textIntro.innerText
+    let mainDescription = document.createElement("h2")
+    mainDescription.style="color:black;"
+    mainDescription.innerText = textType.innerText
+    let secondDescription = document.createElement("h3")
+    secondDescription.innerText = textGuest.innerText
+    innerDiv.append(title, mainDescription, secondDescription)
+    borderDiv.append(innerDiv)
+    activityList.append(borderDiv)
+  }
   const wedgeReturn = (wedge, wedgeKey) => {
     switch (wedge) {
       case wedgeThree:
@@ -143,10 +160,7 @@ function rotateFunction(){
           .then(data => {
                changeText(data)
             console.log(data)
-<<<<<<< HEAD
-            
-=======
->>>>>>> 2881584533207d2f279925427f6bfac284eaac7c
+
           })
         }
         break;
@@ -159,10 +173,7 @@ function rotateFunction(){
           .then(data => {
               changeText(data)
             console.log(data)
-<<<<<<< HEAD
-            
-=======
->>>>>>> 2881584533207d2f279925427f6bfac284eaac7c
+
           })
         }
         break;
@@ -175,10 +186,7 @@ function rotateFunction(){
           .then(data => {
                 changeText(data)
             console.log(data)
-<<<<<<< HEAD
-            
-=======
->>>>>>> 2881584533207d2f279925427f6bfac284eaac7c
+
           })
         }
         break;
@@ -191,10 +199,7 @@ function rotateFunction(){
           .then(data => {
               changeText(data)
             console.log(data)
-<<<<<<< HEAD
-            
-=======
->>>>>>> 2881584533207d2f279925427f6bfac284eaac7c
+
           })
         }
         break;
