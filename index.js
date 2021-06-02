@@ -61,6 +61,7 @@ function rotateFunction(){
   textGuest.textContent= `Participants: ${data.participants}`
   let recommendationDiv = document.querySelector(".gameInto")
   let activityButton = document.createElement("button")
+  activityButton.setAttribute("id","activityBtn")
   activityButton.innerText = "Add activity"
   activityButton.addEventListener('click',addActivity)
   if (recommendationDiv.contains(document.querySelector("button"))) {
@@ -69,7 +70,7 @@ function rotateFunction(){
     recommendationDiv.append(activityButton)
     }
   }
-    
+  
   const addActivity = (data) => {
     let textIntro = document.querySelector("#mainTitle")
     let textType = document.querySelector("#mainDescription");
@@ -78,7 +79,7 @@ function rotateFunction(){
     let activityList = document.getElementById("footer")
     let borderDiv = document.createElement("div")
     borderDiv.className = "gradient-border"
-    let innerDiv = document.createElement("div")
+    let innerDiv = document.querySelector("ul")
     innerDiv.className = "gameInto"
     let title = document.createElement("h1")
     title.innerText = textIntro.innerText

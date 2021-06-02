@@ -54,7 +54,7 @@ body {
   font-family: sans-serif;
   display: flex;
   text-align: center;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   height: 100vh;
   overflow: hidden;
@@ -190,7 +190,20 @@ span b {
 }
 
 #footer {
+  padding-left: 30px;
   position: absolute;
-  bottom: 100px;
   width: 100%;
+  bottom: 0;
+  max-height: 300px;
+  overflow-y: scroll;
+}
+#activityBtn {
+  font-family: sans-serif;
+  font-weight: 900;
+  border-radius: 10%;
+  border-color: blue;
+  color: white;
+  background-color: #f243c6;
+  padding: 10px;
+  margin-top: 30px;
 }
