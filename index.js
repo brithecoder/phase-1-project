@@ -53,16 +53,40 @@ function rotateFunction(){
     })
   }
   function changeText (data){
-  let textIntro = document.querySelector("h1")
-  let textType = document.querySelector("h2");
-  let textGuest = document.querySelector("h3");
+  let textIntro = document.querySelector("#mainTitle")
+  let textType = document.querySelector("#mainDescription");
+  let textGuest = document.querySelector("#secondDescription");
   textIntro.textContent = data.activity 
-  textType.textContent = data.type 
-  textGuest.textContent= data.participants
-     console.log(textIntro)
+  textType.textContent = `${data.type}` 
+  textGuest.textContent= `Participants: ${data.participants}`
+  let recommendationDiv = document.querySelector(".gameInto")
+  let activityButton = document.createElement("button")
+  activityButton.innerText = "Add activity"
+  activityButton.addEventListener('click',addActivity)
+  recommendationDiv.append(activityButton)
   }
     
-
+  const addActivity = (data) => {
+    let textIntro = document.querySelector("#mainTitle")
+    let textType = document.querySelector("#mainDescription");
+    let textGuest = document.querySelector("#secondDescription");
+    console.log("You clicked the button!")
+    let activityList = document.getElementById("footer")
+    let borderDiv = document.createElement("div")
+    borderDiv.className = "gradient-border"
+    let innerDiv = document.createElement("div")
+    innerDiv.className = "gameInto"
+    let title = document.createElement("h1")
+    title.innerText = textIntro.innerText
+    let mainDescription = document.createElement("h2")
+    mainDescription.style="color:black;"
+    mainDescription.innerText = textType.innerText
+    let secondDescription = document.createElement("h3")
+    secondDescription.innerText = textGuest.innerText
+    innerDiv.append(title, mainDescription, secondDescription)
+    borderDiv.append(innerDiv)
+    activityList.append(borderDiv)
+  }
 
   const wedgeReturn = (wedge, wedgeKey) => {
     switch (wedge) {
@@ -109,7 +133,6 @@ function rotateFunction(){
           .then(data => {
                changeText(data)
             console.log(data)
-            confirm("Would you enjoy " +data.activity + "?")
           })
         }
         break;
@@ -122,7 +145,6 @@ function rotateFunction(){
           .then(data => {
               changeText(data)
             console.log(data)
-            confirm("Would you enjoy " +data.activity + "?")
           })
         }
         break;
@@ -135,7 +157,6 @@ function rotateFunction(){
           .then(data => {
                 changeText(data)
             console.log(data)
-            confirm("Would you enjoy " +data.activity + "?")
           })
         }
         break;
@@ -148,7 +169,6 @@ function rotateFunction(){
           .then(data => {
               changeText(data)
             console.log(data)
-            confirm("Would you enjoy " +data.activity + "?")
           })
         }
         break;
@@ -162,7 +182,6 @@ function rotateFunction(){
           .then(data => {
               changeText(data)
             console.log(data)
-            confirm("Would you enjoy " +data.activity + "?")
           })
         }
         break;
@@ -180,29 +199,14 @@ function rotateFunction(){
 
 }
 
-const addActivity = () => {
-  console.log("You clicked the button!")
-  let activityList = document.getElementById("footer")
-  let borderDiv = document.createElement("div")
-  borderDiv.className = "gradient-border"
-  let innerDiv = document.createElement("div")
-  innerDiv.className = "gameInto"
-  let title = document.createElement("h1")
-  title.innerText = "A new activity appeared!"
-  let description = document.createElement("h2")
-  description.style="color:black;"
-  description.innerText = "And here's a description, too!"
-  innerDiv.append(title, description)
-  borderDiv.append(innerDiv)
-  activityList.append(borderDiv)
-}
 
-const renderButton = () => {
-  let activityButton = document.createElement("button")
-  activityButton.innerText = "Add activity"
-  let activityList = document.getElementById("footer")
-  activityList.append(activityButton)
-  activityButton.addEventListener('click',addActivity)
-}
-renderButton();
+
+// const renderButton = () => {
+//   let activityButton = document.createElement("button")
+//   activityButton.innerText = "Add activity"
+//   let activityList = document.getElementById("footer")
+//   activityList.append(activityButton)
+//   activityButton.addEventListener('click',addActivity)
+// }
+// renderButton();
 
