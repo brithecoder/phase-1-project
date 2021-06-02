@@ -63,7 +63,11 @@ function rotateFunction(){
   let activityButton = document.createElement("button")
   activityButton.innerText = "Add activity"
   activityButton.addEventListener('click',addActivity)
-  recommendationDiv.append(activityButton)
+  if (recommendationDiv.contains(document.querySelector("button"))) {
+    console.log("This div contains a button!")
+    } else {
+    recommendationDiv.append(activityButton)
+    }
   }
     
   const addActivity = (data) => {
@@ -198,8 +202,6 @@ function rotateFunction(){
     }, 5000);
 
 }
-
-
 
 // const renderButton = () => {
 //   let activityButton = document.createElement("button")
