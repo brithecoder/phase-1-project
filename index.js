@@ -70,7 +70,19 @@ function rotateFunction(){
     }
   }
     
-  const addActivity = (data) => {
+  function postActivity(activity){
+    fetch("http://localhost:3000/activities", {
+      method:'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(activity)
+    })
+    .then(res => res.json())
+  //  .then(console.log)
+  }
+
+  const addActivity = () => {
     let textIntro = document.querySelector("#mainTitle")
     let textType = document.querySelector("#mainDescription");
     let textGuest = document.querySelector("#secondDescription");
@@ -90,7 +102,17 @@ function rotateFunction(){
     innerDiv.append(title, mainDescription, secondDescription)
     borderDiv.append(innerDiv)
     activityList.append(borderDiv)
+    console.log(secondDescription.innerText)
+    console.log(parseFloat(secondDescription.innerText))
+    let activityObj = {
+      activity: title.innerText,
+      type: mainDescription.innerText,
+      participants: secondDescription.innerText
+    }
+    postActivity(activityObj)
   }
+
+  
 
   const wedgeReturn = (wedge, wedgeKey) => {
     switch (wedge) {
@@ -212,3 +234,26 @@ function rotateFunction(){
 // }
 // renderButton();
 
+const renderActivity = (recommendation) => {
+  console.log("You clicked the button!")
+  let activityList = document.getElementById("footer")
+  let borderDiv = document.createElement("div")
+  borderDiv.className = "gradient-border"
+  let innerDiv = document.createElement("div")
+  innerDiv.className = "gameInto"
+  let title = document.createElement("h1")
+  title.innerText = recommendation.activity
+  let mainDescription = document.createElement("h2")
+  mainDescription.style="color:black;"
+  mainDescription.innerText = recommendation.type
+  let secondDescription = document.createElement("h3")
+  secondDescription.innerText = recommendation.participants
+  innerDiv.append(title, mainDescription, secondDescription)
+  borderDiv.append(innerDiv)
+  activityList.append(borderDiv)
+}
+
+fetch("http://localhost:3000/activities")
+.then(res => res.json())
+.then(data => data.forEach(renderActivity))
+//.then(activity => activity.forEach(renderActivity(activity)))
