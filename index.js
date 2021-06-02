@@ -61,7 +61,7 @@ function rotateFunction(){
   textGuest.textContent= data.participants
      console.log(textIntro)
   }
-    
+
 
 
   const wedgeReturn = (wedge, wedgeKey) => {
@@ -73,6 +73,11 @@ function rotateFunction(){
           fetch(`http://www.boredapi.com/api/activity?key=${wedgeKey}`)
           .then(res => res.json())
           .then(data => { changeText(data)
+             let activityButton = document.createElement("button")
+            activityButton.innerText = "Add activity"
+             let activityList = document.getElementById("footer")
+            activityList.append(activityButton)
+            activityButton.addEventListener('click',addActivity)
             console.log(data)
           })
         }
@@ -109,7 +114,7 @@ function rotateFunction(){
           .then(data => {
                changeText(data)
             console.log(data)
-            confirm("Would you enjoy " +data.activity + "?")
+            
           })
         }
         break;
@@ -122,7 +127,7 @@ function rotateFunction(){
           .then(data => {
               changeText(data)
             console.log(data)
-            confirm("Would you enjoy " +data.activity + "?")
+            
           })
         }
         break;
@@ -135,7 +140,7 @@ function rotateFunction(){
           .then(data => {
                 changeText(data)
             console.log(data)
-            confirm("Would you enjoy " +data.activity + "?")
+            
           })
         }
         break;
@@ -148,7 +153,7 @@ function rotateFunction(){
           .then(data => {
               changeText(data)
             console.log(data)
-            confirm("Would you enjoy " +data.activity + "?")
+            
           })
         }
         break;
@@ -162,7 +167,6 @@ function rotateFunction(){
           .then(data => {
               changeText(data)
             console.log(data)
-            confirm("Would you enjoy " +data.activity + "?")
           })
         }
         break;
