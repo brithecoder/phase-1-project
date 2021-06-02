@@ -5,6 +5,72 @@
       "activity": "Listen to a new music genre",
       "type": "music",
       "participants": "Participants: 1"
+    },
+    {
+      "activity": "Do a jigsaw puzzle | recreational | Participants: 1",
+      "type": "recreational",
+      "participants": "Participants: 1",
+      "id": 2
+    },
+    {
+      "activity": "Make a couch fort | recreational | Participants: 1",
+      "type": "recreational",
+      "participants": "Participants: 1",
+      "id": 3
+    },
+    {
+      "activity": "Read a formal research paper on an interesting subject | education | Participants: 1",
+      "type": "education",
+      "participants": "Participants: 1",
+      "id": 4
+    },
+    {
+      "activity": "Listen to your favorite album | music | Participants: 1",
+      "type": "music",
+      "participants": "Participants: 1",
+      "id": 5
+    },
+    {
+      "activity": "Write a poem | recreational | Participants: 1",
+      "type": "recreational",
+      "participants": "Participants: 1",
+      "id": 6
+    },
+    {
+      "activity": "Play a volleyball match with some friends | social | Participants: 4",
+      "type": "social",
+      "participants": "Participants: 4",
+      "id": 7
+    },
+    {
+      "activity": "Patronize a local independent restaurant | recreational | Participants: 1",
+      "type": "recreational",
+      "participants": "Participants: 1",
+      "id": 8
+    },
+    {
+      "activity": "Cook something together with someone | cooking | Participants: 2",
+      "type": "cooking",
+      "participants": "Participants: 2",
+      "id": 9
+    },
+    {
+      "activity": "Learn Express.js | education | Participants: 1",
+      "type": "education",
+      "participants": "Participants: 1",
+      "id": 10
+    },
+    {
+      "activity": "Learn Express.js | education | Participants: 1",
+      "type": "education",
+      "participants": "Participants: 1",
+      "id": 11
+    },
+    {
+      "activity": "Learn how to iceskate or rollerskate | recreational | Participants: 1",
+      "type": "recreational",
+      "participants": "Participants: 1",
+      "id": 12
     }
   ]
 }

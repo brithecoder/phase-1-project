@@ -89,27 +89,29 @@ function rotateFunction(){
     let textType = document.querySelector("#mainDescription");
     let textGuest = document.querySelector("#secondDescription");
     console.log("You clicked the button!")
-    let activityList = document.getElementById("footer")
-    let borderDiv = document.createElement("div")
-    borderDiv.className = "gradient-border"
-    let innerDiv = document.querySelector("ul")
-    innerDiv.className = "gameInto"
-    let title = document.createElement("h1")
-    title.innerText = textIntro.innerText
-    let mainDescription = document.createElement("h2")
-    mainDescription.style="color:black;"
-    mainDescription.innerText = textType.innerText
-    let secondDescription = document.createElement("h3")
-    secondDescription.innerText = textGuest.innerText
-    innerDiv.append(title, mainDescription, secondDescription)
-    borderDiv.append(innerDiv)
-    activityList.append(borderDiv)
-    console.log(secondDescription.innerText)
-    console.log(parseFloat(secondDescription.innerText))
+  //  let activityList = document.getElementById("footer")
+    let activityList = document.getElementById("list")
+  //  let borderDiv = document.createElement("div")
+  //  borderDiv.className = "gradient-border"
+  //  let innerDiv = document.querySelector("ul")
+  //  innerDiv.className = "gameInto"
+  //  let title = document.createElement("h1")
+    let title = document.createElement("li")
+    title.innerText = textIntro.innerText + " | " + textType.innerText + " | " + textGuest.innerText
+  //  let mainDescription = document.createElement("h2")
+  //  mainDescription.style="color:black;"
+  //  mainDescription.innerText = textType.innerText
+  //  let secondDescription = document.createElement("h3")
+  //  secondDescription.innerText = textGuest.innerText
+  //  innerDiv.append(title, mainDescription, secondDescription)
+  //  borderDiv.append(innerDiv)
+  //  activityList.append(borderDiv)
+    activityList.append(title)
+    
     let activityObj = {
       activity: title.innerText,
-      type: mainDescription.innerText,
-      participants: secondDescription.innerText
+      type: textType.innerText,
+      participants: textGuest.innerText
     }
     postActivity(activityObj)
   }
@@ -236,21 +238,24 @@ function rotateFunction(){
 
 const renderActivity = (recommendation) => {
   console.log("You clicked the button!")
-  let activityList = document.getElementById("footer")
-  let borderDiv = document.createElement("div")
-  borderDiv.className = "gradient-border"
-  let innerDiv = document.createElement("div")
-  innerDiv.className = "gameInto"
-  let title = document.createElement("h1")
-  title.innerText = recommendation.activity
-  let mainDescription = document.createElement("h2")
-  mainDescription.style="color:black;"
-  mainDescription.innerText = recommendation.type
-  let secondDescription = document.createElement("h3")
-  secondDescription.innerText = recommendation.participants
-  innerDiv.append(title, mainDescription, secondDescription)
-  borderDiv.append(innerDiv)
-  activityList.append(borderDiv)
+  //let activityList = document.getElementById("footer")
+  let activityList = document.getElementById("list")
+  //let borderDiv = document.createElement("div")
+  //borderDiv.className = "gradient-border"
+  //let innerDiv = document.createElement("div")
+  //innerDiv.className = "gameInto"
+  //let title = document.createElement("h1")
+  let title = document.createElement("li")
+  title.innerText = recommendation.activity + " | " + recommendation.type + " | " + recommendation.participants
+  //let mainDescription = document.createElement("h2")
+  //mainDescription.style="color:black;"
+  //mainDescription.innerText = recommendation.type
+  //let secondDescription = document.createElement("h3")
+  //secondDescription.innerText = recommendation.participants
+  //innerDiv.append(title, mainDescription, secondDescription)
+  //borderDiv.append(innerDiv)
+  //activityList.append(borderDiv)
+  activityList.append(title)
 }
 
 fetch("http://localhost:3000/activities")

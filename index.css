@@ -193,7 +193,7 @@ span b {
   padding-left: 30px;
   position: absolute;
   width: 100%;
-  bottom: 0;
+  top: 900px;
   max-height: 300px;
   overflow-y: scroll;
 }
