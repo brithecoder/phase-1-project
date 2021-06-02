@@ -61,6 +61,7 @@ function rotateFunction(){
   textGuest.textContent= `Participants: ${data.participants}`
   let recommendationDiv = document.querySelector(".gameInto")
   let activityButton = document.createElement("button")
+  activityButton.setAttribute("id","activityBtn")
   activityButton.innerText = "Add activity"
   activityButton.addEventListener('click',addActivity)
   if (recommendationDiv.contains(document.querySelector("button"))) {
@@ -69,6 +70,7 @@ function rotateFunction(){
     recommendationDiv.append(activityButton)
     }
   }
+
     
   function postActivity(activity){
     fetch("http://localhost:3000/activities", {
@@ -90,7 +92,7 @@ function rotateFunction(){
     let activityList = document.getElementById("footer")
     let borderDiv = document.createElement("div")
     borderDiv.className = "gradient-border"
-    let innerDiv = document.createElement("div")
+    let innerDiv = document.querySelector("ul")
     innerDiv.className = "gameInto"
     let title = document.createElement("h1")
     title.innerText = textIntro.innerText
@@ -123,6 +125,11 @@ function rotateFunction(){
           fetch(`http://www.boredapi.com/api/activity?key=${wedgeKey}`)
           .then(res => res.json())
           .then(data => { changeText(data)
+             let activityButton = document.createElement("button")
+            activityButton.innerText = "Add activity"
+             let activityList = document.getElementById("footer")
+            activityList.append(activityButton)
+            activityButton.addEventListener('click',addActivity)
             console.log(data)
           })
         }
@@ -225,14 +232,7 @@ function rotateFunction(){
 
 }
 
-// const renderButton = () => {
-//   let activityButton = document.createElement("button")
-//   activityButton.innerText = "Add activity"
-//   let activityList = document.getElementById("footer")
-//   activityList.append(activityButton)
-//   activityButton.addEventListener('click',addActivity)
-// }
-// renderButton();
+
 
 const renderActivity = (recommendation) => {
   console.log("You clicked the button!")
