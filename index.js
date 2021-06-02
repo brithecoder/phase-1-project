@@ -9,11 +9,9 @@
 function rotateFunction(){
   var min = 1024;
   var max = 9999;
-//  var deg = Math.floor(Math.random() * (max - min)) + min + 360;
-    var deg = 45
+  var deg = Math.floor(Math.random() * (max - min)) + min + 360;
   document.getElementById('box').style.transform = "rotate("+deg+"deg)";
-//  let degrees = deg % 360;
-  let degrees = deg
+  let degrees = deg % 360;
   //Declare wedge bindings
   let wedgeOne = document.getElementById("wedge1")
   let wedgeTwo = document.getElementById("wedge2")
