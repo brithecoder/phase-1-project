@@ -12,7 +12,7 @@
   --borderWidth: 10px;
   background: whitesmoke;
   color: #892fe2;
-  position: center;
+  position: relative;
   border-radius: var(--borderWidth);
 }
 .gradient-border:after {
