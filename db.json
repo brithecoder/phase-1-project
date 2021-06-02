@@ -1,0 +1,10 @@
+{
+  "activities": [
+    {
+      "id": 1,
+      "activity": "Listen to a new music genre",
+      "type": "music",
+      "participants": "Participants: 1"
+    }
+  ]
+}
