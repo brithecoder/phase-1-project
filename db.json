@@ -5,6 +5,12 @@
       "activity": "Listen to a new music genre",
       "type": "music",
       "participants": "Participants: 1"
+    },
+    {
+      "activity": "Donate blood at a local blood center",
+      "type": "charity",
+      "participants": "Participants: 1",
+      "id": 2
     }
   ]
 }
