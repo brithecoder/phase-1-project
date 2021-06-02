@@ -53,6 +53,16 @@ function rotateFunction(){
 //      })
     })
   }
+  function changeText (data){
+  let textIntro = document.querySelector("h1")
+  let textType = document.querySelector("h2");
+  let textGuest = document.querySelector("h3");
+  textIntro.textContent = data.activity 
+  textType.textContent = data.type 
+  textGuest.textContent= data.participants
+     console.log(textIntro)
+  }
+    
 
   const wedgeReturn = (wedge, wedgeKey) => {
     switch (wedge) {
@@ -62,8 +72,9 @@ function rotateFunction(){
 //          console.log(wedgeKey)
           fetch(`http://www.boredapi.com/api/activity?key=${wedgeKey}`)
           .then(res => res.json())
-          .then(data => {
+          .then(data => { changeText(data)
             console.log(data)
+
           })
         }
         break;
@@ -73,8 +84,9 @@ function rotateFunction(){
 //          console.log(wedgeKey)
           fetch(`http://www.boredapi.com/api/activity?key=${wedgeKey}`)
           .then(res => res.json())
-          .then(data => {
+          .then(data => { changeText(data)
             console.log(data)
+        
           })
         }
         break;
@@ -85,7 +97,9 @@ function rotateFunction(){
           fetch(`http://www.boredapi.com/api/activity?key=${wedgeKey}`)
           .then(res => res.json())
           .then(data => {
+              changeText(data)
             console.log(data)
+            
           })
         }
         break;
@@ -96,6 +110,7 @@ function rotateFunction(){
           fetch(`http://www.boredapi.com/api/activity?key=${wedgeKey}`)
           .then(res => res.json())
           .then(data => {
+               changeText(data)
             console.log(data)
           })
         }
@@ -107,6 +122,7 @@ function rotateFunction(){
           fetch(`http://www.boredapi.com/api/activity?key=${wedgeKey}`)
           .then(res => res.json())
           .then(data => {
+              changeText(data)
             console.log(data)
           })
         }
@@ -118,6 +134,7 @@ function rotateFunction(){
           fetch(`http://www.boredapi.com/api/activity?key=${wedgeKey}`)
           .then(res => res.json())
           .then(data => {
+                changeText(data)
             console.log(data)
           })
         }
@@ -129,6 +146,7 @@ function rotateFunction(){
           fetch(`http://www.boredapi.com/api/activity?key=${wedgeKey}`)
           .then(res => res.json())
           .then(data => {
+              changeText(data)
             console.log(data)
           })
         }
@@ -141,6 +159,7 @@ function rotateFunction(){
           fetch(`http://www.boredapi.com/api/activity?key=${wedgeKey}`)
           .then(res => res.json())
           .then(data => {
+              changeText(data)
             console.log(data)
           })
         }
