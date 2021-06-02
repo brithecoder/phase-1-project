@@ -12,7 +12,7 @@
   --borderWidth: 10px;
   background: whitesmoke;
   color: #892fe2;
-  position: relative;
+  position: center;
   border-radius: var(--borderWidth);
 }
 .gradient-border:after {
@@ -193,7 +193,7 @@ span b {
   padding-left: 30px;
   position: absolute;
   width: 100%;
-  bottom: 0;
+  top: 900px;
   max-height: 300px;
   overflow-y: scroll;
 }
