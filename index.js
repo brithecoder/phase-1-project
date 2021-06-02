@@ -47,12 +47,16 @@ function rotateFunction(){
   const wedgeReturn = () => {
     if (degrees <= 22.5) {
         console.log(wedgeThree.childNodes[0].innerText)
+        prompt("Would you enjoy" + wedgeThree.childNodes[0].innerText +"?")
     } else if (degrees <= 67.5) {
         console.log(wedgeFour.childNodes[0].innerText)
+        prompt("Would you enjoy" + wedgeFour.childNodes[0].innerText + "?")
     } else if (degrees <= 112.5) {
         console.log(wedgeFive.childNodes[0].innerText)
+         prompt("Would you enjoy" + wedgeFive.childNodes[0].innerText + "?")
     } else if (degrees <= 157.5) {
         console.log(wedgeSix.childNodes[0].innerText)
+        prompt("Would you enjoy" + wedgeFive.childNodes[0].innerText + "?")
     } else if (degrees <= 202.5) {
         console.log(wedgeSeven.childNodes[0].innerText)
     } else if (degrees <= 247.5) {
