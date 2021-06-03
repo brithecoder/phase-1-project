@@ -43,9 +43,8 @@ function rotateFunction(){
     .then(data => {
       title.innerText = data.activity
       let wedgeKey = data.key
-      setTimeout(wedgeReturn,4250,wedge,wedgeKey)
-    //  setTimeout(wedgeReturn(wedge, wedgeKey),5000)
-    // wedgeReturn(wedge, wedgeKey)
+    //  setTimeout(wedgeReturn,4250,wedge,wedgeKey)
+     wedgeReturn(wedge, wedgeKey)
 //      console.log(wedgeKey)
 //      fetch(`http://www.boredapi.com/api/activity?key=${wedgeKey}`)
 //      .then(res => res.json())
@@ -86,30 +85,22 @@ function rotateFunction(){
   //  .then(console.log)
   }
 
+
+
   const addActivity = () => {
     let textIntro = document.querySelector("#mainTitle")
     let textType = document.querySelector("#mainDescription");
     let textGuest = document.querySelector("#secondDescription");
     console.log("You clicked the button!")
-  //  let activityList = document.getElementById("footer")
     let activityList = document.getElementById("list")
-  //  let borderDiv = document.createElement("div")
-  //  borderDiv.className = "gradient-border"
-  //  let innerDiv = document.querySelector("ul")
-  //  innerDiv.className = "gameInto"
-  //  let title = document.createElement("h1")
     let title = document.createElement("li")
+    let deleteButton = document.createElement('button')
+    deleteButton.innerText = "Remove"
     title.id = "lipadding"
-//    title.innerText = textIntro.innerText + " | " + textType.innerText + " | " + textGuest.innerText
-title.innerHTML = `<strong><font color="#892fe2">${textIntro.innerText}</font></strong> | <strong>${textType.innerText}</strong> | <strong><font color="#892fe2">${textGuest.innerText}</font><strong>`
-  //  let mainDescription = document.createElement("h2")
-  //  mainDescription.style="color:black;"
-  //  mainDescription.innerText = textType.innerText
-  //  let secondDescription = document.createElement("h3")
-  //  secondDescription.innerText = textGuest.innerText
-  //  innerDiv.append(title, mainDescription, secondDescription)
-  //  borderDiv.append(innerDiv)
-  //  activityList.append(borderDiv)
+    title.innerHTML = `<strong><font color="#892fe2">${textIntro.innerText}</font></strong> | <strong>${textType.innerText}</strong> | <strong><font color="#892fe2">${textGuest.innerText}</font><strong> `
+    title.append(deleteButton)
+    deleteButton.addEventListener('click',deleteActivity)
+
     activityList.append(title)
     
     let activityObj = {
@@ -232,29 +223,21 @@ title.innerHTML = `<strong><font color="#892fe2">${textIntro.innerText}</font></
 
 }
 
-
+const deleteActivity = (e) => {
+  let lineItem = e.target.parentNode;
+  lineItem.parentNode.removeChild(lineItem);
+}
 
 const renderActivity = (recommendation) => {
   console.log("You clicked the button!")
-  //let activityList = document.getElementById("footer")
   let activityList = document.getElementById("list")
-  //let borderDiv = document.createElement("div")
-  //borderDiv.className = "gradient-border"
-  //let innerDiv = document.createElement("div")
-  //innerDiv.className = "gameInto"
-  //let title = document.createElement("h1")
   let title = document.createElement("li")
   title.id = "lipadding"
-  //title.innerText = recommendation.activity + " | " + recommendation.type + " | " + recommendation.participants
-  title.innerHTML = `<strong><font color="#892fe2">${recommendation.activity}</font></strong> | <strong>${recommendation.type}</strong> | <strong><font color="#892fe2">${recommendation.participants}</font><strong>`
-  //let mainDescription = document.createElement("h2")
-  //mainDescription.style="color:black;"
-  //mainDescription.innerText = recommendation.type
-  //let secondDescription = document.createElement("h3")
-  //secondDescription.innerText = recommendation.participants
-  //innerDiv.append(title, mainDescription, secondDescription)
-  //borderDiv.append(innerDiv)
-  //activityList.append(borderDiv)
+  title.innerHTML = `<strong><font color="#892fe2">${recommendation.activity}</font></strong> | <strong>${recommendation.type}</strong> | <strong><font color="#892fe2">${recommendation.participants}</font><strong> `
+  let deleteButton = document.createElement('button')
+  deleteButton.innerText = "Remove"
+  title.append(deleteButton)
+  deleteButton.addEventListener('click',deleteActivity)
   activityList.append(title)
 }
 
