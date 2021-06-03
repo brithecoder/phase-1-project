@@ -246,7 +246,7 @@ const renderActivity = (recommendation) => {
   //innerDiv.className = "gameInto"
   //let title = document.createElement("h1")
   let title = document.createElement("li")
-  title.innerText = recommendation.activity + " | " + recommendation.type + " | " + recommendation.participants
+  title.innerText =  recommendation.activity +  " " + recommendation.type + " " + recommendation.participants 
   //let mainDescription = document.createElement("h2")
   //mainDescription.style="color:black;"
   //mainDescription.innerText = recommendation.type
@@ -262,3 +262,5 @@ fetch("http://localhost:3000/activities")
 .then(res => res.json())
 .then(data => data.forEach(renderActivity))
 //.then(activity => activity.forEach(renderActivity(activity)))
+
+
