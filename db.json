@@ -7,16 +7,28 @@
       "participants": "Participants: 1"
     },
     {
-      "activity": "Draw something interesting",
-      "type": "recreational",
+      "activity": "Learn how the internet works",
+      "type": "education",
       "participants": "Participants: 1",
       "id": 2
     },
     {
-      "activity": "Learn how to whistle with your fingers",
-      "type": "education",
+      "activity": "Look at pictures and videos of cute animals",
+      "type": "relaxation",
       "participants": "Participants: 1",
       "id": 3
+    },
+    {
+      "activity": "Look at pictures and videos of cute animals",
+      "type": "relaxation",
+      "participants": "Participants: 1",
+      "id": 4
+    },
+    {
+      "activity": "Patronize a local independent restaurant",
+      "type": "recreational",
+      "participants": "Participants: 1",
+      "id": 5
     }
   ]
 }
