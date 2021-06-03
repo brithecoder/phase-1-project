@@ -11,6 +11,12 @@
       "type": "recreational",
       "participants": "Participants: 1",
       "id": 2
+    },
+    {
+      "activity": "Learn how to whistle with your fingers",
+      "type": "education",
+      "participants": "Participants: 1",
+      "id": 3
     }
   ]
 }

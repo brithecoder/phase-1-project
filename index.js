@@ -43,7 +43,9 @@ function rotateFunction(){
     .then(data => {
       title.innerText = data.activity
       let wedgeKey = data.key
-      wedgeReturn(wedge, wedgeKey)
+      setTimeout(wedgeReturn,4250,wedge,wedgeKey)
+    //  setTimeout(wedgeReturn(wedge, wedgeKey),5000)
+    // wedgeReturn(wedge, wedgeKey)
 //      console.log(wedgeKey)
 //      fetch(`http://www.boredapi.com/api/activity?key=${wedgeKey}`)
 //      .then(res => res.json())
