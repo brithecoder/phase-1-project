@@ -15,7 +15,7 @@
   position: relative;
   border-radius: var(--borderWidth);
   float: left;
-  max-width: 400px
+  max-width: 400px;
 }
 .gradient-border:after {
   content: "";
@@ -56,10 +56,10 @@ body {
   font-family: sans-serif;
   display: flex;
   text-align: center;
-  /* justify-content: center; */
+  justify-content: center;
   align-items: center;
   height: 100vh;
-/*  overflow: hidden; */
+  overflow: visible;
   background-size: cover;
   background: rgb(60, 60, 242);
   background: linear-gradient(
@@ -192,7 +192,6 @@ span b {
   }
 }
 
-
 #footer {
   max-height: 300px;
   overflow-y: scroll;
@@ -231,4 +230,9 @@ span b {
 
 #lipadding {
   padding: 5px;
+}
+.limit {
+  overflow: visible;
+  word-wrap: break-word;
+  padding-left: 10px;
 }
