@@ -97,7 +97,9 @@ function rotateFunction(){
   //  innerDiv.className = "gameInto"
   //  let title = document.createElement("h1")
     let title = document.createElement("li")
-    title.innerText = textIntro.innerText + " | " + textType.innerText + " | " + textGuest.innerText
+    title.id = "lipadding"
+//    title.innerText = textIntro.innerText + " | " + textType.innerText + " | " + textGuest.innerText
+title.innerHTML = `<strong><font color="#892fe2">${textIntro.innerText}</font></strong> | <strong>${textType.innerText}</strong> | <strong><font color="#892fe2">${textGuest.innerText}</font><strong>`
   //  let mainDescription = document.createElement("h2")
   //  mainDescription.style="color:black;"
   //  mainDescription.innerText = textType.innerText
@@ -109,7 +111,7 @@ function rotateFunction(){
     activityList.append(title)
     
     let activityObj = {
-      activity: title.innerText,
+      activity: textIntro.innerText,
       type: textType.innerText,
       participants: textGuest.innerText
     }
@@ -127,12 +129,6 @@ function rotateFunction(){
           fetch(`http://www.boredapi.com/api/activity?key=${wedgeKey}`)
           .then(res => res.json())
           .then(data => { changeText(data)
-             let activityButton = document.createElement("button")
-            activityButton.innerText = "Add activity"
-             let activityList = document.getElementById("footer")
-            activityList.append(activityButton)
-            activityButton.addEventListener('click',addActivity)
-            console.log(data)
           })
         }
         break;
@@ -246,7 +242,9 @@ const renderActivity = (recommendation) => {
   //innerDiv.className = "gameInto"
   //let title = document.createElement("h1")
   let title = document.createElement("li")
-  title.innerText = recommendation.activity + " | " + recommendation.type + " | " + recommendation.participants
+  title.id = "lipadding"
+  //title.innerText = recommendation.activity + " | " + recommendation.type + " | " + recommendation.participants
+  title.innerHTML = `<strong><font color="#892fe2">${recommendation.activity}</font></strong> | <strong>${recommendation.type}</strong> | <strong><font color="#892fe2">${recommendation.participants}</font><strong>`
   //let mainDescription = document.createElement("h2")
   //mainDescription.style="color:black;"
   //mainDescription.innerText = recommendation.type
