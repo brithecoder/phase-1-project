@@ -14,6 +14,8 @@
   color: #892fe2;
   position: relative;
   border-radius: var(--borderWidth);
+  float: left;
+  max-width: 400px
 }
 .gradient-border:after {
   content: "";
@@ -57,7 +59,7 @@ body {
   /* justify-content: center; */
   align-items: center;
   height: 100vh;
-  overflow: hidden;
+/*  overflow: hidden; */
   background-size: cover;
   background: rgb(60, 60, 242);
   background: linear-gradient(
@@ -68,6 +70,7 @@ body {
 }
 #page {
   padding-left: 20px;
+  float: left;
 }
 .mainbox {
   text-align: center;
@@ -189,14 +192,21 @@ span b {
   }
 }
 
+
+#footer {
+  max-height: 300px;
+  overflow-y: scroll;
+}
+/*
 #footer {
   padding-left: 30px;
   position: absolute;
   width: 100%;
-  top: 900px;
+  top: 10px;
   max-height: 300px;
   overflow-y: scroll;
 }
+*/
 #activityBtn {
   font-family: sans-serif;
   font-weight: 900;
@@ -206,4 +216,19 @@ span b {
   background-color: #f243c6;
   padding: 10px;
   margin-top: 30px;
+}
+
+#maindiv {
+  margin: auto;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto;
+  justify-content: space-evenly;
+  margin: auto;
+}
+
+#lipadding {
+  padding: 5px;
 }
