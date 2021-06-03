@@ -245,3 +245,22 @@ span b {
 #lipadding {
   padding: 5px;
 }
+
+.deleteButton {
+  background-color: none; 
+  border: 2px solid red;
+  color: red;
+  padding: 2px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 4px;
+  transition-duration: 0.4s;
+}
+
+.deleteButton:hover {
+  background-color: red;
+  color: white;
+}
