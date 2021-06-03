@@ -1,18 +1,13 @@
 
-
-//  BtnListener => {
-//         let button = document.querySelector(".spin");
-//         button.addEventListener("click",rotateFunction ())
-    
-//     }
-
+// The function that's called upon when a user selects the SPIN button at the center of the wheel
 function rotateFunction(){
   var min = 1024;
   var max = 9999;
+  //randomizes the degrees that the wheel will spin
   var deg = Math.floor(Math.random() * (max - min)) + min + 360;
   document.getElementById('box').style.transform = "rotate("+deg+"deg)";
   let degrees = deg % 360;
-  //Declare wedge bindings
+  //Declare wedge bindings in the DOM
   let wedgeOne = document.getElementById("wedge1")
   let wedgeTwo = document.getElementById("wedge2")
   let wedgeThree = document.getElementById("wedge3")
@@ -22,20 +17,8 @@ function rotateFunction(){
   let wedgeSeven = document.getElementById("wedge7")
   let wedgeEight = document.getElementById("wedge8")
 
-  //render wedges with new activity when wheel is spun
-  const renderWedges = () => {
-    console.log(degrees)
-    newActivity(wedgeOne);
-    newActivity(wedgeTwo);
-    newActivity(wedgeThree);
-    newActivity(wedgeFour);
-    newActivity(wedgeFive);
-    newActivity(wedgeSix);
-    newActivity(wedgeSeven);
-    newActivity(wedgeEight);
-//    wedgeReturn();
-  }
  
+  // Adds the activity title to the wedge's inner text and runs the wedgeReturn function to determine which wedge was selected
   const newActivity = (wedge) => {
     let title = wedge.childNodes[0]
     fetch(`http://www.boredapi.com/api/activity/`)
@@ -43,16 +26,82 @@ function rotateFunction(){
     .then(data => {
       title.innerText = data.activity
       let wedgeKey = data.key
-    //  setTimeout(wedgeReturn,4250,wedge,wedgeKey)
-     wedgeReturn(wedge, wedgeKey)
-//      console.log(wedgeKey)
-//      fetch(`http://www.boredapi.com/api/activity?key=${wedgeKey}`)
-//      .then(res => res.json())
-//      .then(data => {
-//        console.log(data)
-//      })
+      setTimeout(wedgeReturn,4250,wedge,wedgeKey)
     })
   }
+
+  // Based on the degree rotation, fetches the selected wedge's additional info to feed into the changeText function
+  const wedgeReturn = (wedge, wedgeKey) => {
+    switch (wedge) {
+      case wedgeThree:
+        if (degrees > 247.5 && degrees <= 292.5) {
+          fetch(`http://www.boredapi.com/api/activity?key=${wedgeKey}`)
+          .then(res => res.json())
+          .then(data => { changeText(data)
+          })
+        }
+        break;
+      case wedgeFour:
+        if (degrees > 67.5 && degrees <= 112.5) {
+          fetch(`http://www.boredapi.com/api/activity?key=${wedgeKey}`)
+          .then(res => res.json())
+          .then(data => { changeText(data)
+          })
+        }
+        break;
+      case wedgeFive:
+        if (degrees > 292.5 && degrees <= 337.5) {
+          fetch(`http://www.boredapi.com/api/activity?key=${wedgeKey}`)
+          .then(res => res.json())
+          .then(data => { changeText(data)
+          })
+        }
+        break;
+      case wedgeSix:
+        if (degrees > 112.5 && degrees <= 157.5) {
+          fetch(`http://www.boredapi.com/api/activity?key=${wedgeKey}`)
+          .then(res => res.json())
+          .then(data => { changeText(data)
+          })
+        }
+        break;
+      case wedgeSeven:
+        if (degrees > 22.5 && degrees <= 67.5) {  
+          fetch(`http://www.boredapi.com/api/activity?key=${wedgeKey}`)
+          .then(res => res.json())
+          .then(data => { changeText(data)
+          })
+        }
+        break;
+      case wedgeEight:
+        if (degrees > 202.5 && degrees <= 247.5) {
+          fetch(`http://www.boredapi.com/api/activity?key=${wedgeKey}`)
+          .then(res => res.json())
+          .then(data => { changeText(data)
+          })
+        }
+        break;
+      case wedgeOne:
+        if (degrees > 157.5 && degrees <= 202.5) {
+          fetch(`http://www.boredapi.com/api/activity?key=${wedgeKey}`)
+          .then(res => res.json())
+          .then(data => { changeText(data)
+          })
+        }
+        break;
+      case wedgeTwo:
+        if (degrees <= 22.5 || degrees >337.5) {
+          fetch(`http://www.boredapi.com/api/activity?key=${wedgeKey}`)
+          .then(res => res.json())
+          .then(data => { changeText(data)
+          })
+        }
+        break;
+      default: console.log("This should never happen, but NO wedge was selected?!")
+    }
+  }
+
+  // Based on the wedge that was returned from the above function, changes the text of the card to the left of the wheel
   function changeText (data){
   let textIntro = document.querySelector("#mainTitle")
   let textType = document.querySelector("#mainDescription");
@@ -64,7 +113,9 @@ function rotateFunction(){
   let activityButton = document.createElement("button")
   activityButton.setAttribute("id","activityBtn")
   activityButton.innerText = "Add activity"
+  // Add an event listener so that the user can add the activity to the My List ul AND the db.json file
   activityButton.addEventListener('click',addActivity)
+  // Ensures that only ONE activity button gets added (vs. one every spin)
   if (recommendationDiv.contains(document.querySelector("button"))) {
     console.log("This div contains a button!")
     } else {
@@ -72,7 +123,20 @@ function rotateFunction(){
     }
   }
 
-    
+  //The callback function of the "Add activity" button, which creates a workable object to POST to db.json
+  const addActivity = () => {
+    let textIntro = document.querySelector("#mainTitle")
+    let textType = document.querySelector("#mainDescription");
+    let textGuest = document.querySelector("#secondDescription");
+    let activityObj = {
+      activity: textIntro.innerText,
+      type: textType.innerText,
+      participants: textGuest.innerText
+    }
+    postActivity(activityObj)
+  }  
+
+  //The post to db.json based on the information within the activity card at the time the "Add activity" button was clicked
   function postActivity(activity){
     fetch("http://localhost:3000/activities", {
       method:'POST',
@@ -85,174 +149,34 @@ function rotateFunction(){
     .then(data => renderActivity(data))
   }
 
-  const addActivity = () => {
-    let textIntro = document.querySelector("#mainTitle")
-    let textType = document.querySelector("#mainDescription");
-    let textGuest = document.querySelector("#secondDescription");
-    let activityObj = {
-      activity: textIntro.innerText,
-      type: textType.innerText,
-      participants: textGuest.innerText
-    }
-    postActivity(activityObj)
-  }
-/*
-  const addActivity = () => {
-    let textIntro = document.querySelector("#mainTitle")
-    let textType = document.querySelector("#mainDescription");
-    let textGuest = document.querySelector("#secondDescription");
-    console.log("You clicked the button!")
-    let activityList = document.getElementById("list")
-    let title = document.createElement("li")
-    let deleteButton = document.createElement('button')
-    deleteButton.innerText = "Remove"
-    title.id = "lipadding"
-    title.innerHTML = `<strong><font color="#892fe2">${textIntro.innerText}</font></strong> | <strong>${textType.innerText}</strong> | <strong><font color="#892fe2">${textGuest.innerText}</font><strong> `
-    title.append(deleteButton)
-    deleteButton.addEventListener('click',deleteActivity)
-
-    activityList.append(title)
-    
-    let activityObj = {
-      activity: textIntro.innerText,
-      type: textType.innerText,
-      participants: textGuest.innerText
-    }
-    postActivity(activityObj)
-  }
-*/
-  
-
-  const wedgeReturn = (wedge, wedgeKey) => {
-    switch (wedge) {
-      case wedgeThree:
-        if (degrees > 247.5 && degrees <= 292.5) {
-          console.log("3 was pinged")
-//          console.log(wedgeKey)
-          fetch(`http://www.boredapi.com/api/activity?key=${wedgeKey}`)
-          .then(res => res.json())
-          .then(data => { changeText(data)
-          })
-        }
-        break;
-      case wedgeFour:
-        if (degrees > 67.5 && degrees <= 112.5) {
-          console.log("4 was pinged")
-//          console.log(wedgeKey)
-          fetch(`http://www.boredapi.com/api/activity?key=${wedgeKey}`)
-          .then(res => res.json())
-          .then(data => { changeText(data)
-            console.log(data)
-          })
-        }
-        break;
-      case wedgeFive:
-        if (degrees > 292.5 && degrees <= 337.5) {
-          console.log("5 was pinged")
-//          console.log(wedgeKey)
-          fetch(`http://www.boredapi.com/api/activity?key=${wedgeKey}`)
-          .then(res => res.json())
-          .then(data => {
-              changeText(data)
-            console.log(data)
-          })
-        }
-        break;
-      case wedgeSix:
-        if (degrees > 112.5 && degrees <= 157.5) {
-          console.log("6 was pinged")
-//          console.log(wedgeKey)
-          fetch(`http://www.boredapi.com/api/activity?key=${wedgeKey}`)
-          .then(res => res.json())
-          .then(data => {
-               changeText(data)
-            console.log(data)
-          })
-        }
-        break;
-      case wedgeSeven:
-        if (degrees > 22.5 && degrees <= 67.5) {  
-          console.log("7 was pinged")
-//          console.log(wedgeKey)
-          fetch(`http://www.boredapi.com/api/activity?key=${wedgeKey}`)
-          .then(res => res.json())
-          .then(data => {
-              changeText(data)
-            console.log(data)
-          })
-        }
-        break;
-      case wedgeEight:
-        if (degrees > 202.5 && degrees <= 247.5) {
-          console.log("8 was pinged")
-//          console.log(wedgeKey)
-          fetch(`http://www.boredapi.com/api/activity?key=${wedgeKey}`)
-          .then(res => res.json())
-          .then(data => {
-                changeText(data)
-            console.log(data)
-          })
-        }
-        break;
-      case wedgeOne:
-        if (degrees > 157.5 && degrees <= 202.5) {
-          console.log("1 was pinged")
-//          console.log(wedgeKey)
-          fetch(`http://www.boredapi.com/api/activity?key=${wedgeKey}`)
-          .then(res => res.json())
-          .then(data => {
-              changeText(data)
-            console.log(data)
-          })
-        }
-        break;
-      case wedgeTwo:
-//        if (degrees > 292.5 && degrees <= 337.5) {
-        if (degrees <= 22.5 || degrees >337.5) {
-          console.log("2 was pinged")
-//          console.log(wedgeKey)
-          fetch(`http://www.boredapi.com/api/activity?key=${wedgeKey}`)
-          .then(res => res.json())
-          .then(data => {
-              changeText(data)
-            console.log(data)
-          })
-        }
-        break;
-      default: console.log("Nothing!")
-    }
+   // Adds the description of the activity to each wedge and runs the necessary fetch requests for each
+   const renderWedges = () => {
+    newActivity(wedgeOne);
+    newActivity(wedgeTwo);
+    newActivity(wedgeThree);
+    newActivity(wedgeFour);
+    newActivity(wedgeFive);
+    newActivity(wedgeSix);
+    newActivity(wedgeSeven);
+    newActivity(wedgeEight);
   }
   renderWedges();
 
-  var element = document.getElementById('mainbox');
-  element.classList.remove('animate');
-
-  setTimeout(function(){
-    element.classList.add('animate');
-    }, 5000);
-
 }
 
-const deleteActivity = (e, fetchId) => {
-  console.log(e)
-  console.log(fetchId)
-  let lineItem = e.target.parentNode;
-  lineItem.parentNode.removeChild(lineItem);
-  fetch(`http://localhost:3000/activities/${fetchId}`, {
-    method: "DELETE",
-    headers: {
-      "Content-Type":"application/json"
-    }
-  })
+// Fetches existing activities from the db.json file
+fetch("http://localhost:3000/activities")
+.then(res => res.json())
+.then(data => data.forEach(renderActivity))
 
-}
-
+// Renders an activity, whether upon initially POSTing the activity to db.json or upon page load
 const renderActivity = (recommendation) => {
   let activityList = document.getElementById("list")
   let title = document.createElement("li")
   let fetchId = recommendation.id
   title.id = "lipadding"
   title.innerHTML = `<strong><font color="#892fe2">${recommendation.activity}</font></strong> | <strong>${recommendation.type}</strong> | <strong><font color="#892fe2">${recommendation.participants}</font><strong> `
+  //Delete activity button
   let deleteButton = document.createElement('button')
   deleteButton.innerText = "X"
   deleteButton.className = "deleteButton"
@@ -262,21 +186,18 @@ const renderActivity = (recommendation) => {
   })
   activityList.append(title)
 }
-/*
-const renderActivity = (recommendation) => {
-  console.log("You clicked the button!")
-  let activityList = document.getElementById("list")
-  let title = document.createElement("li")
-  title.id = "lipadding"
-  title.innerHTML = `<strong><font color="#892fe2">${recommendation.activity}</font></strong> | <strong>${recommendation.type}</strong> | <strong><font color="#892fe2">${recommendation.participants}</font><strong> `
-  let deleteButton = document.createElement('button')
-  deleteButton.innerText = "Remove"
-  title.append(deleteButton)
-  deleteButton.addEventListener('click',deleteActivity)
-  activityList.append(title)
+
+// Function which, upon clicking a delete activity button, removes the button...
+const deleteActivity = (e, fetchId) => {
+  // ...from the unordered list
+  let lineItem = e.target.parentNode;
+  lineItem.parentNode.removeChild(lineItem);
+  // ...and from db.json
+  fetch(`http://localhost:3000/activities/${fetchId}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type":"application/json"
+    }
+  })
 }
-*/
-fetch("http://localhost:3000/activities")
-.then(res => res.json())
-.then(data => data.forEach(renderActivity))
-//.then(activity => activity.forEach(renderActivity(activity)))
+
