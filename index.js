@@ -82,11 +82,21 @@ function rotateFunction(){
       body: JSON.stringify(activity)
     })
     .then(res => res.json())
-  //  .then(console.log)
+    .then(data => renderActivity(data))
   }
 
-
-
+  const addActivity = () => {
+    let textIntro = document.querySelector("#mainTitle")
+    let textType = document.querySelector("#mainDescription");
+    let textGuest = document.querySelector("#secondDescription");
+    let activityObj = {
+      activity: textIntro.innerText,
+      type: textType.innerText,
+      participants: textGuest.innerText
+    }
+    postActivity(activityObj)
+  }
+/*
   const addActivity = () => {
     let textIntro = document.querySelector("#mainTitle")
     let textType = document.querySelector("#mainDescription");
@@ -110,7 +120,7 @@ function rotateFunction(){
     }
     postActivity(activityObj)
   }
-
+*/
   
 
   const wedgeReturn = (wedge, wedgeKey) => {
@@ -223,11 +233,36 @@ function rotateFunction(){
 
 }
 
-const deleteActivity = (e) => {
+const deleteActivity = (e, fetchId) => {
+  console.log(e)
+  console.log(fetchId)
   let lineItem = e.target.parentNode;
   lineItem.parentNode.removeChild(lineItem);
+  fetch(`http://localhost:3000/activities/${fetchId}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type":"application/json"
+    }
+  })
+
 }
 
+const renderActivity = (recommendation) => {
+  let activityList = document.getElementById("list")
+  let title = document.createElement("li")
+  let fetchId = recommendation.id
+  title.id = "lipadding"
+  title.innerHTML = `<strong><font color="#892fe2">${recommendation.activity}</font></strong> | <strong>${recommendation.type}</strong> | <strong><font color="#892fe2">${recommendation.participants}</font><strong> `
+  let deleteButton = document.createElement('button')
+  deleteButton.innerText = "X"
+  deleteButton.className = "deleteButton"
+  title.append(deleteButton)
+  deleteButton.addEventListener('click', (e) => {
+    deleteActivity(e, fetchId);
+  })
+  activityList.append(title)
+}
+/*
 const renderActivity = (recommendation) => {
   console.log("You clicked the button!")
   let activityList = document.getElementById("list")
@@ -240,7 +275,7 @@ const renderActivity = (recommendation) => {
   deleteButton.addEventListener('click',deleteActivity)
   activityList.append(title)
 }
-
+*/
 fetch("http://localhost:3000/activities")
 .then(res => res.json())
 .then(data => data.forEach(renderActivity))

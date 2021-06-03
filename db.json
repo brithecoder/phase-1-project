@@ -1,34 +1,10 @@
 {
   "activities": [
     {
-      "id": 1,
-      "activity": "Listen to a new music genre",
-      "type": "music",
-      "participants": "Participants: 1"
-    },
-    {
-      "activity": "Learn how the internet works",
-      "type": "education",
-      "participants": "Participants: 1",
-      "id": 2
-    },
-    {
-      "activity": "Look at pictures and videos of cute animals",
-      "type": "relaxation",
-      "participants": "Participants: 1",
-      "id": 3
-    },
-    {
-      "activity": "Look at pictures and videos of cute animals",
-      "type": "relaxation",
-      "participants": "Participants: 1",
-      "id": 4
-    },
-    {
-      "activity": "Patronize a local independent restaurant",
+      "activity": "Plant a tree",
       "type": "recreational",
       "participants": "Participants: 1",
-      "id": 5
+      "id": 1
     }
   ]
 }
