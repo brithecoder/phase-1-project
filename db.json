@@ -11,6 +11,18 @@
       "type": "recreational",
       "participants": "Participants: 1",
       "id": 2
+    },
+    {
+      "activity": "Bake something you've never tried before",
+      "type": "cooking",
+      "participants": "Participants: 1",
+      "id": 3
+    },
+    {
+      "activity": "Learn a new recipe",
+      "type": "cooking",
+      "participants": "Participants: 1",
+      "id": 4
     }
   ]
 }
