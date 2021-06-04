@@ -1,10 +1,10 @@
 
 // The function that's called upon when a user selects the SPIN button at the center of the wheel
 function rotateFunction(){
-  var min = 1024;
-  var max = 9999;
+  let min = 1024;
+  let max = 9999;
   //randomizes the degrees that the wheel will spin
-  var deg = Math.floor(Math.random() * (max - min)) + min + 360;
+  let deg = Math.floor(Math.random() * (max - min)) + min + 360;
   document.getElementById('box').style.transform = "rotate("+deg+"deg)";
   let degrees = deg % 360;
   //Declare wedge bindings in the DOM
@@ -162,6 +162,14 @@ function rotateFunction(){
   }
   renderWedges();
 
+  // These make the pointer arrow bounce after the wheel is spun
+  let element = document.getElementById('mainbox');
+  element.classList.remove('animate');
+
+  setTimeout(function(){
+    element.classList.add('animate');
+    }, 5000);
+
 }
 
 // Fetches existing activities from the db.json file
@@ -200,4 +208,3 @@ const deleteActivity = (e, fetchId) => {
     }
   })
 }
-

@@ -7,28 +7,22 @@
       "id": 2
     },
     {
-      "activity": "Start a blog for something you're passionate about",
-      "type": "recreational",
-      "participants": "Participants: 1",
-      "id": 5
-    },
-    {
-      "activity": "Start a blog for something you're passionate about",
-      "type": "recreational",
-      "participants": "Participants: 1",
-      "id": 6
-    },
-    {
-      "activity": "Hold a yard sale",
-      "type": "social",
+      "activity": "Organize your pantry",
+      "type": "busywork",
       "participants": "Participants: 1",
       "id": 7
     },
     {
-      "activity": "Hold a yard sale",
-      "type": "social",
+      "activity": "Fill out a basketball bracket",
+      "type": "recreational",
       "participants": "Participants: 1",
       "id": 8
+    },
+    {
+      "activity": "Host a movie marathon with some friends",
+      "type": "social",
+      "participants": "Participants: 3",
+      "id": 9
     }
   ]
 }
